@@ -1,0 +1,87 @@
+package dayThree;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+	
+
+public class ChallengeTwoDayThree {
+	
+	public static void main(String[] args) {
+
+		File file = new File("inputRucksack.txt");
+		
+	    try {
+			Scanner scanner = new Scanner(file);
+			
+			int totalScore = 0;
+			String rucksack;
+			String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			char[] firstRow, secondRow, thirdRow;
+			int rowNum = 1;
+			Map<Character, Integer> map = new HashMap<>();
+			Map<Character, Integer> mapSecond = new HashMap<>();
+		
+			while (scanner.hasNext()) {
+				rucksack = scanner.nextLine();
+				
+				if (rowNum == 1) {
+					firstRow = rucksack.toCharArray();
+					
+					for(int i = 0; i < rucksack.length(); i++) {
+						map.put(firstRow[i], 1);
+					}
+					
+					rowNum++;
+				} else if (rowNum == 2) {
+					secondRow = rucksack.toCharArray();
+					
+					for(int i = 0; i < rucksack.length(); i++) {
+						if(map.containsKey(secondRow[i])) {	
+							mapSecond.put(secondRow[i], 1);
+						}
+					}
+					
+					rowNum++;
+				} else if (rowNum == 3) {
+					thirdRow = rucksack.toCharArray();
+					
+					for(int i = 0; i < rucksack.length(); i++) {
+						if(map.containsKey(thirdRow[i])) {	
+					    	if(mapSecond.containsKey(thirdRow[i])) {
+					    		System.out.println(thirdRow[i] + " " + (alphabet.indexOf(thirdRow[i]) + 1));
+					    		totalScore += (alphabet.indexOf(thirdRow[i]) + 1);
+						        System.out.println("totalScore = " + totalScore);
+						        break;
+					    	}
+						}
+					}
+					
+					rowNum++;
+				} else {
+					
+					map.clear();
+					mapSecond.clear();
+					
+					firstRow = rucksack.toCharArray();
+					
+					for(int i = 0; i < rucksack.length(); i++) {
+						map.put(firstRow[i], 1);
+					}
+					rowNum = 2;
+				}
+				
+			}
+				
+			scanner.close();
+			
+			System.out.print(totalScore);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
