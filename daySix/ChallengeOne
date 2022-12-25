@@ -1,0 +1,38 @@
+package daySix;
+
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.*;
+
+public class ChallengeOneDaySix {
+
+	public static void main(String[] args) throws IOException{
+		
+		Path path = Paths.get("inputTuningTrouble.txt");
+        List<String> datastream = Files.readAllLines(path);
+        
+        String[] split = datastream.get(0).split("");
+        ArrayList<String> marker = new ArrayList<String>();
+        
+        int count = 0;
+        
+        while (true){
+            if (!marker.contains(split[0].substring(0,1))){
+                marker.add(split[0].substring(0,1));
+                
+                split = Arrays.copyOfRange(split, 1, split.length);
+                
+                count++;
+                
+                if (marker.size() == 4){
+                    System.out.println(count);
+                    break;
+                }
+            }
+            
+            else while (marker.contains(split[0].substring(0,1))){
+                marker.remove(0);
+            }
+        }
+    }
+}
