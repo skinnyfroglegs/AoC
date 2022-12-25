@@ -1,0 +1,59 @@
+package dayFour;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.File;
+
+
+public class ChallengeOneDayFour {
+		
+		public static void main(String[] args) {
+
+			File file = new File("inputCampCleanup.txt");
+			
+		    try {
+				Scanner scanner = new Scanner(file);
+				
+				int count = 0;
+				String pairs;
+				String[] singlePair, firstPair, secondPair;
+				int firstStart, secondStart, firstEnd, secondEnd;
+			
+				while (scanner.hasNext()) {
+					pairs = scanner.nextLine();
+					
+					singlePair = pairs.split(","); 
+				    firstPair = singlePair[0].split("-");
+				    secondPair = singlePair[1].split("-");
+				    
+				    firstStart = Integer.parseInt(firstPair[0]);
+				    secondStart = Integer.parseInt(secondPair[0]);
+				    firstEnd = Integer.parseInt(firstPair[1]);
+				    secondEnd = Integer.parseInt(secondPair[1]);
+				    
+				    if (firstStart < secondStart) {
+				    	if(firstEnd >= secondEnd) {
+				    		count++;
+				    		System.out.println(pairs);
+				    	}
+				    } else if (firstStart == secondStart) {	
+				    	count++;   	
+				    } else {
+				    	if(firstEnd <= secondEnd) {
+				    		count++;
+				    		System.out.println(pairs);
+				    	}
+				    }
+				    													
+				}
+					
+				scanner.close();
+				
+				System.out.print(count);
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
