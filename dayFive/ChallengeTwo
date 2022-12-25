@@ -1,0 +1,69 @@
+package dayFive;
+
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ChallengeTwoDayFive {	
+	
+    public static void main(String[] args) throws IOException {
+        
+    	Path path = Paths.get("inputSupplyStacks.txt");
+        List<String> input = Files.readAllLines(path); 
+        
+        int move, from, to, resume = 0;
+        String[] split;
+        String letters, result = "";
+        
+        ArrayList<String> boxes = new ArrayList<>();
+        ArrayList<Integer> columnNum = new ArrayList<>();
+        ArrayList<String> arrangedBoxes = new ArrayList<>();
+
+        for (int i = 0; i < input.size(); i++){
+            if (input.get(i).equals("")){
+                resume = i;
+                break;
+            }
+        
+            boxes.add(input.get(i));
+        }
+
+        for (int i = boxes.size() - 1; i >= 0; i--){
+            if (i == boxes.size() - 1){
+                for (int idx = 0; idx < boxes.get(i).length(); idx++){
+                    if ((int)boxes.get(i).charAt(idx) >= 49 && (int)boxes.get(i).charAt(idx) <= 57){
+                        columnNum.add(idx);
+                        arrangedBoxes.add("");
+                    }
+                }
+            }
+
+            for (int u = 0; u < columnNum.size(); u++){
+                if (boxes.get(i).charAt(columnNum.get(u)) != ' '){
+                    arrangedBoxes.set(u, arrangedBoxes.get(u) + boxes.get(i).charAt(columnNum.get(u)));
+                }
+            }
+        }
+
+
+        for (int i = resume + 1; i < input.size(); i++){
+            split = input.get(i).replaceAll("[^\\d.]", " ").strip().split("\\W+");
+            move = Integer.parseInt(split[0]);
+            from = Integer.parseInt(split[1]);
+            to = Integer.parseInt(split[2]);
+            letters = arrangedBoxes.get(from - 1);
+            letters = letters.substring(letters.length() - move);
+            
+            arrangedBoxes.set(from - 1, arrangedBoxes.get(from - 1).substring(0, arrangedBoxes.get(from - 1).length() - move));
+            arrangedBoxes.set(to - 1, arrangedBoxes.get(to - 1) + letters);
+        }
+        
+
+        for (int i = 0; i < arrangedBoxes.size(); i++){
+            result = result+arrangedBoxes.get(i).substring(arrangedBoxes.get(i).length()-1);
+        }
+
+        System.out.println(result);
+    }
+}
