@@ -1,0 +1,81 @@
+package dayEight;
+
+	import java.io.IOException;
+	import java.nio.file.*;
+	import java.util.*;
+
+	public class ChallengeTwoDayEight {
+	    public static void main(String[] args) throws IOException {
+	        Path input = Paths.get("inputTreeHouse.txt");
+	        List<String> trees = Files.readAllLines(input);
+	        
+	        String[] split, split2;
+	        int center = 0, scenicSum = 0, scenicUp = 0, scenicDown = 0, scenicLeft = 0, scenicRight = 0;
+
+	        for (int i = 0; i < trees.size(); i++){
+	            split = trees.get(i).split("");
+
+	            if (!(i == 0 || i == trees.size()-1)){
+	                for (int j = 0; j < split.length; j++){
+	                    if (!(j == 0 || j == split.length - 1)){
+	                        scenicUp = 0;
+	                        scenicDown = 0;
+	                        scenicLeft = 0;
+	                        scenicRight = 0;
+
+	                        center = Integer.parseInt(split[j]);
+
+	                        for (int count = i-1; count >= 0; count--){
+	                            split2 = trees.get(count).split("");
+	                            
+	                            if (center <= Integer.parseInt(split2[j])){
+	                                scenicUp += 1;
+	                                break;
+	                            }
+	                            else {
+	                                scenicUp += 1;
+	                            }
+	                        }
+
+	                        for (int count = i+1; count < trees.size(); count++){
+	                            split2 = trees.get(count).split("");
+	                            
+	                            if (center <= Integer.parseInt(split2[j])){
+	                                scenicDown += 1;
+	                                break;
+	                            }
+	                            else {
+	                                scenicDown += 1;
+	                            }
+	                        }
+
+	                        for (int count = j-1; count>=0; count--){
+	                            if (center <= Integer.parseInt(split[count])){
+	                                scenicLeft += 1;
+	                                break;
+	                            }
+	                            else {
+	                                scenicLeft += 1;
+	                            }
+	                        }
+
+	                        for (int count = j+1; count<split.length; count++){
+	                            if (center <= Integer.parseInt(split[count])){
+	                                scenicRight += 1;
+	                                break;
+	                            }
+	                            else {
+	                                scenicRight += 1;
+	                            }
+	                        }
+	                        
+	                        if (scenicSum < (scenicUp*scenicDown*scenicLeft*scenicRight)){
+	                            scenicSum = scenicUp*scenicDown*scenicLeft*scenicRight;
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	        System.out.println(scenicSum);
+	    }
+	}
