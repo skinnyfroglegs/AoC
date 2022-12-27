@@ -1,0 +1,64 @@
+package dayTen;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.io.File;
+
+
+public class ChallengeOneDayTen {
+		
+		public static void main(String[] args) {
+
+			File file = new File("inputCathode.txt");
+			
+		    try {
+				Scanner scanner = new Scanner(file);
+				
+				String cycle;
+				String[] addx;
+				int cycleNum = 0, x = 1, signalStrength, signalSum = 0;
+			
+				while (scanner.hasNext()) {
+					cycle = scanner.nextLine();
+
+					if (cycle.contentEquals("noop")) {
+						cycleNum++;
+						signalSum += checkCycleNum(cycleNum, x);
+						
+					} else {
+						cycleNum++;
+						signalSum += checkCycleNum(cycleNum, x);
+						
+						cycleNum++;
+						signalSum += checkCycleNum(cycleNum, x);
+						
+						addx = cycle.split(" ");
+						x += Integer.parseInt(addx[1]);
+						
+					}
+					
+					
+				    													
+				}
+					
+				scanner.close();
+				
+				System.out.print(signalSum);
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		private static int checkCycleNum(int cycleNum, int x){
+			int signalStrength, signalSum = 0;
+			
+			if (cycleNum == 20 || cycleNum == 60 || cycleNum == 100 || cycleNum == 140 || cycleNum == 180 || cycleNum == 220) {
+				signalStrength = x * cycleNum;
+				signalSum += signalStrength;
+			}
+	        return signalSum;
+	    }
+
+	}
