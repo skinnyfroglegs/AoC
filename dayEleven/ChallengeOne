@@ -269,6 +269,8 @@ public class ChallengeOneDayEleven {
 										
 					for(Integer item : monkeyZero) {
 						
+						item /= 3;
+						
 						if(monkeyZeroOperator.equals("*")) {
 							op = item * monkeyZeroOpNum;
 						} else if (monkeyZeroOperator.equals("+")) {
@@ -288,6 +290,8 @@ public class ChallengeOneDayEleven {
 					
 					for(int item : monkeyOne) {
 						
+						item /= 3;
+						
 						op = item * item;
 						
 						if(op%monkeyOneOpNum2 == 0) {
@@ -301,6 +305,8 @@ public class ChallengeOneDayEleven {
 					monkeyOne.clear();
 					
 					for(int item : monkeyTwo) {
+						
+						item /= 3;
 						
 						if(monkeyTwoOperator.equals("*")) {
 							op = item * monkeyTwoOpNum;
@@ -321,6 +327,8 @@ public class ChallengeOneDayEleven {
 					
 					for(int item : monkeyThree) {
 						
+						item /= 3;
+						
 						if(monkeyThreeOperator.equals("*")) {
 							op = item * monkeyThreeOpNum;
 						} else if (monkeyThreeOperator.equals("+")) {
@@ -339,6 +347,8 @@ public class ChallengeOneDayEleven {
 					monkeyThree.clear();
 
 					for(int item : monkeyFour) {
+						
+						item /= 3;
 						
 						if(monkeyFourOperator.equals("*")) {
 							op = item * monkeyFourOpNum;
@@ -359,6 +369,8 @@ public class ChallengeOneDayEleven {
 
 					for(int item : monkeyFive) {
 						
+						item /= 3;
+						
 						if(monkeyFiveOperator.equals("*")) {
 							op = item * monkeyFiveOpNum;
 						} else if (monkeyFiveOperator.equals("+")) {
@@ -377,6 +389,8 @@ public class ChallengeOneDayEleven {
 					monkeyFive.clear();
 
 					for(int item : monkeySix) {
+						
+						item /= 3;
 						
 						if(monkeySixOperator.equals("*")) {
 							op = item * monkeySixOpNum;
@@ -397,6 +411,8 @@ public class ChallengeOneDayEleven {
 
 					for(int item : monkeySeven) {
 						
+						item /= 3;
+						
 						if(monkeySevenOperator.equals("*")) {
 							op = item * monkeySevenOpNum;
 						} else if (monkeySevenOperator.equals("+")) {
@@ -416,6 +432,7 @@ public class ChallengeOneDayEleven {
 					
 					
 				}
+				
 				
 				int [] monkeyArray = new int [] {monkeyZeroCount, monkeyOneCount, monkeyTwoCount, monkeyThreeCount, 
 						monkeyFourCount, monkeyFiveCount, monkeySixCount, monkeySevenCount};     
