@@ -1,0 +1,447 @@
+package dayEleven;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
+
+
+public class ChallengeOneDayEleven {
+		
+		public static void main(String[] args) {
+
+			File file = new File("inputMonkeyBusiness.txt");
+			
+		    try {
+				Scanner scanner = new Scanner(file);
+				
+				String monkeyInfo;
+				String[] addx;
+				int monkeyNum = 0;
+				ArrayList<Integer> monkeyZero = new ArrayList<>();
+				ArrayList<Integer> monkeyOne = new ArrayList<>();
+				ArrayList<Integer> monkeyTwo = new ArrayList<>();
+				ArrayList<Integer> monkeyThree = new ArrayList<>();
+				ArrayList<Integer> monkeyFour = new ArrayList<>();
+				ArrayList<Integer> monkeyFive = new ArrayList<>();
+				ArrayList<Integer> monkeySix = new ArrayList<>();
+				ArrayList<Integer> monkeySeven = new ArrayList<>();
+				String monkeyZeroOperator = null, monkeyOneOperator = null, monkeyTwoOperator = null, monkeyThreeOperator = null, monkeyFourOperator = null, monkeyFiveOperator = null, monkeySixOperator = null, monkeySevenOperator = null;
+				int monkeyZeroOpNum = 0, monkeyOneOpNum = 0, monkeyTwoOpNum = 0, monkeyThreeOpNum = 0, monkeyFourOpNum = 0, monkeyFiveOpNum = 0, monkeySixOpNum = 0, monkeySevenOpNum = 0;
+				int monkeyZeroOpNum2 = 0, monkeyOneOpNum2 = 0, monkeyTwoOpNum2 = 0, monkeyThreeOpNum2 = 0, monkeyFourOpNum2 = 0, monkeyFiveOpNum2 = 0, monkeySixOpNum2 = 0, monkeySevenOpNum2 = 0;
+				int monkeyZeroTrue, monkeyOneTrue, monkeyTwoTrue, monkeyThreeTrue, monkeyFourTrue, monkeyFiveTrue, monkeySixTrue, monkeySevenTrue;
+				int monkeyZeroFalse, monkeyOneFalse, monkeyTwoFalse, monkeyThreeFalse, monkeyFourFalse, monkeyFiveFalse, monkeySixFalse, monkeySevenFalse;
+
+				while (scanner.hasNext()) {
+					monkeyInfo = scanner.nextLine();
+			
+					if(monkeyInfo.startsWith("Monkey")) {
+						monkeyNum = Integer.parseInt(monkeyInfo.replaceAll("[^0-9]", ""));
+						
+					} else if(monkeyInfo.startsWith("  Starting")) {
+						
+						String[] items = monkeyInfo.split(" ");
+						
+						for(String item : items) {
+							item.replaceAll("[^0-9]", "");
+						}
+						
+						switch (monkeyNum) {
+							case 0: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeyZero.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 1: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeyOne.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 2: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeyTwo.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 3: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeyThree.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 4: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeyFour.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 5: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeyFive.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 6: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeySix.add(Integer.parseInt(items[i]));
+							};
+							break;
+							case 7: for(int i = 4; i < items.length; i++) {
+								items[i].replaceAll("[^0-9]", "");
+								items[i] = items[i].replace(",","");
+								monkeySeven.add(Integer.parseInt(items[i]));
+							};
+							break;
+							default: System.out.println("Suspicious acitivity in starting");
+							break;
+						}
+					} else if(monkeyInfo.startsWith("  Operation")) {
+						
+						String[] operation = monkeyInfo.split(" ");
+						
+						switch (monkeyNum) {
+							case 0: monkeyZeroOperator = operation[6];
+									monkeyZeroOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeyZeroOperator + " + " + monkeyZeroOpNum);
+							break;
+							case 1: monkeyOneOperator = operation[6];
+									System.out.println(monkeyOneOperator);
+							break;
+							case 2: monkeyTwoOperator = operation[6];
+									monkeyTwoOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeyTwoOperator + " + " + monkeyTwoOpNum);
+							break;
+							case 3: monkeyThreeOperator = operation[6];
+									monkeyThreeOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeyThreeOperator + " + " + monkeyThreeOpNum);
+							break;
+							case 4: monkeyFourOperator = operation[6];
+									monkeyFourOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeyFourOperator + " + " + monkeyFourOpNum);
+							break;
+							case 5: monkeyFiveOperator = operation[6];
+									monkeyFiveOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeyFiveOperator + " + " + monkeyFiveOpNum);
+							break;
+							case 6: monkeySixOperator = operation[6];
+									monkeySixOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeySixOperator + " + " + monkeySixOpNum);
+							break;
+							case 7: monkeySevenOperator = operation[6];
+									monkeySevenOpNum = Integer.parseInt(operation[7]);
+									System.out.println(monkeySevenOperator + " + " + monkeySevenOpNum);
+							break;
+							default: System.out.println("Suspicious acitivity in operation");
+							break;
+						}
+						
+						
+					} else if(monkeyInfo.startsWith("  Test")) {
+						
+						String[] test = monkeyInfo.split(" ");
+						
+						switch (monkeyNum) {
+							case 0: 
+									monkeyZeroOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeyZeroOpNum2);
+							break;
+							case 1: 
+									monkeyOneOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeyOneOpNum2);
+							break;
+							case 2: 
+									monkeyTwoOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeyTwoOpNum2);
+							break;
+							case 3: 
+									monkeyThreeOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeyThreeOpNum2);
+							break;
+							case 4: 
+									monkeyFourOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeyFourOpNum2);
+							break;
+							case 5: 
+									monkeyFiveOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeyFiveOpNum2);
+							break;
+							case 6: 
+									monkeySixOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeySixOpNum2);
+							break;
+							case 7: 
+									monkeySevenOpNum2 = Integer.parseInt(test[5]);
+									System.out.println(monkeySevenOpNum2);
+							break;
+							default: System.out.println("Suspicious acitivity in test");
+							break;
+						}
+					} else if(monkeyInfo.startsWith("    If true")) {
+						String[] trueTest = monkeyInfo.split(" ");
+						
+						switch (monkeyNum) {
+							case 0: 
+									monkeyZeroTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeyZeroTrue);
+							break;
+							case 1: 
+									monkeyOneTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeyOneTrue);
+							break;
+							case 2: 
+									monkeyTwoTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeyTwoTrue);
+							break;
+							case 3: 
+									monkeyThreeTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeyThreeTrue);
+							break;
+							case 4: 
+									monkeyFourTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeyFourTrue);
+							break;
+							case 5: 
+									monkeyFiveTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeyFiveTrue);
+							break;
+							case 6: 
+									monkeySixTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeySixTrue);
+							break;
+							case 7: 
+									monkeySevenTrue = Integer.parseInt(trueTest[9]);
+									System.out.println(monkeySevenTrue);
+							break;
+							default: System.out.println("Suspicious acitivity in true");
+							break;
+						}
+					} else if(monkeyInfo.startsWith("    If false")) {
+						String[] falseTest = monkeyInfo.split(" ");
+						
+						switch (monkeyNum) {
+						case 0: 
+							monkeyZeroFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeyZeroFalse);
+					break;
+					case 1: 
+							monkeyOneFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeyOneFalse);
+					break;
+					case 2: 
+							monkeyTwoFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeyTwoFalse);
+					break;
+					case 3: 
+							monkeyThreeFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeyThreeFalse);
+					break;
+					case 4: 
+							monkeyFourFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeyFourFalse);
+					break;
+					case 5: 
+							monkeyFiveFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeyFiveFalse);
+					break;
+					case 6: 
+							monkeySixFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeySixFalse);
+					break;
+					case 7: 
+							monkeySevenFalse = Integer.parseInt(falseTest[9]);
+							System.out.println(monkeySevenFalse);
+					break;
+							default: System.out.println("Suspicious acitivity in false");
+							break;
+						}
+					} 
+				}
+				
+				scanner.close();
+				
+				int op = 0;
+				int monkeyZeroCount = 0, monkeyOneCount = 0, monkeyTwoCount = 0, monkeyThreeCount = 0, monkeyFourCount = 0, monkeyFiveCount = 0, monkeySixCount = 0, monkeySevenCount = 0;
+								
+				for(int i = 0; i < 10000; i++) {
+										
+					for(Integer item : monkeyZero) {
+						
+						if(monkeyZeroOperator.equals("*")) {
+							op = item * monkeyZeroOpNum;
+						} else if (monkeyZeroOperator.equals("+")) {
+							op = item + monkeyZeroOpNum;
+						}
+						
+						if(op%monkeyZeroOpNum2 == 0) {
+							monkeyOne.add(item);
+						} else {
+							monkeyFour.add(item);
+						}
+						
+						monkeyZeroCount++;
+						
+					}
+					monkeyZero.clear();
+					
+					for(int item : monkeyOne) {
+						
+						op = item * item;
+						
+						if(op%monkeyOneOpNum2 == 0) {
+							monkeySeven.add(item);
+						} else {
+							monkeyThree.add(item);
+						}
+						
+						monkeyOneCount++;
+					}
+					monkeyOne.clear();
+					
+					for(int item : monkeyTwo) {
+						
+						if(monkeyTwoOperator.equals("*")) {
+							op = item * monkeyTwoOpNum;
+						} else if (monkeyZeroOperator.equals("+")) {
+							op = item + monkeyTwoOpNum;
+						}
+						
+						if(op%monkeyTwoOpNum2 == 0) {
+							monkeyZero.add(item);
+						} else {
+							monkeyFive.add(item);
+						}
+						
+						monkeyTwoCount++;
+						
+					}
+					monkeyTwo.clear();
+					
+					for(int item : monkeyThree) {
+						
+						if(monkeyThreeOperator.equals("*")) {
+							op = item * monkeyThreeOpNum;
+						} else if (monkeyThreeOperator.equals("+")) {
+							op = item + monkeyThreeOpNum;
+						}
+						
+						if(op%monkeyThreeOpNum2 == 0) {
+							monkeySix.add(item);
+						} else {
+							monkeyTwo.add(item);
+						}
+						
+						monkeyThreeCount++;
+						
+					}
+					monkeyThree.clear();
+
+					for(int item : monkeyFour) {
+						
+						if(monkeyFourOperator.equals("*")) {
+							op = item * monkeyFourOpNum;
+						} else if (monkeyFourOperator.equals("+")) {
+							op = item + monkeyFourOpNum;
+						}
+						
+						if(op%monkeyFourOpNum2 == 0) {
+							monkeyOne.add(item);
+						} else {
+							monkeySeven.add(item);
+						}
+						
+						monkeyFourCount++;
+						
+					}
+					monkeyFour.clear();
+
+					for(int item : monkeyFive) {
+						
+						if(monkeyFiveOperator.equals("*")) {
+							op = item * monkeyFiveOpNum;
+						} else if (monkeyFiveOperator.equals("+")) {
+							op = item + monkeyFiveOpNum;
+						}
+						
+						if(op%monkeyFiveOpNum2 == 0) {
+							monkeyZero.add(item);
+						} else {
+							monkeyFour.add(item);
+						}
+						
+						monkeyFiveCount++;
+						
+					}
+					monkeyFive.clear();
+
+					for(int item : monkeySix) {
+						
+						if(monkeySixOperator.equals("*")) {
+							op = item * monkeySixOpNum;
+						} else if (monkeySixOperator.equals("+")) {
+							op = item + monkeySixOpNum;
+						}
+						
+						if(op%monkeySixOpNum2 == 0) {
+							monkeyFive.add(item);
+						} else {
+							monkeyTwo.add(item);
+						}
+						
+						monkeySixCount++;
+						
+					}
+					monkeySix.clear();
+
+					for(int item : monkeySeven) {
+						
+						if(monkeySevenOperator.equals("*")) {
+							op = item * monkeySevenOpNum;
+						} else if (monkeySevenOperator.equals("+")) {
+							op = item + monkeySevenOpNum;
+						}
+						
+						if(op%monkeySevenOpNum2 == 0) {
+							monkeyThree.add(item);
+						} else {
+							monkeySix.add(item);
+						}
+						
+						monkeySevenCount++;
+						
+					}
+					monkeySeven.clear();
+					
+					
+				}
+				
+				
+				int [] monkeyArray = new int [] {monkeyZeroCount, monkeyOneCount, monkeyTwoCount, monkeyThreeCount, 
+						monkeyFourCount, monkeyFiveCount, monkeySixCount, monkeySevenCount};     
+		        int temp = 0;    
+		 
+		        
+		        for (int i = 0; i <monkeyArray.length; i++) {     
+		          for (int j = i+1; j <monkeyArray.length; j++) {     
+		              if(monkeyArray[i] >monkeyArray[j]) { 
+		                 temp = monkeyArray[i];    
+		                 monkeyArray[i] = monkeyArray[j];    
+		                 monkeyArray[j] = temp;    
+		               }     
+		            }     
+		        }    
+		            
+		        
+		        int answer = monkeyArray[6] * monkeyArray[7];
+				
+				System.out.print("Answer: " + answer);
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}				
+
+	}
