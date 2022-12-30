@@ -417,8 +417,23 @@ public class ChallengeOneDayEleven {
 					
 				}
 				
-				int answer = monkeyZeroCount * monkeyOneCount * monkeyTwoCount * monkeyThreeCount * 
-						monkeyFourCount * monkeyFiveCount * monkeySixCount * monkeySevenCount;
+				int [] monkeyArray = new int [] {monkeyZeroCount, monkeyOneCount, monkeyTwoCount, monkeyThreeCount, 
+						monkeyFourCount, monkeyFiveCount, monkeySixCount, monkeySevenCount};     
+		        int temp = 0;    
+		 
+		        
+		        for (int i = 0; i <monkeyArray.length; i++) {     
+		          for (int j = i+1; j <monkeyArray.length; j++) {     
+		              if(monkeyArray[i] >monkeyArray[j]) { 
+		                 temp = monkeyArray[i];    
+		                 monkeyArray[i] = monkeyArray[j];    
+		                 monkeyArray[j] = temp;    
+		               }     
+		            }     
+		        }    
+		            
+		        
+		        int answer = monkeyArray[6] * monkeyArray[7];
 				
 				System.out.print("Answer: " + answer);
 				
